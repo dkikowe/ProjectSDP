@@ -11,6 +11,18 @@ public class OrderBuilder {
     public OrderBuilder addDrink(String drinkType, int sugarAmount, boolean caramel, boolean vanilla, boolean coconut) {
         Drink drink = new BasicCoffee();
 
+        switch (drinkType.toLowerCase()){
+            case "latte":
+                drink = new Latte();
+                break;
+            case "americano":
+                drink = new Americano();
+                break;
+            case "capuccino":
+                drink = new Capuccino();
+                break;
+        }
+
         if (sugarAmount > 0) {
             drink = new Sugar(drink, sugarAmount);
         }
@@ -24,13 +36,32 @@ public class OrderBuilder {
             drink = new CoconutSyrup(drink);
         }
 
-        order.addItem(drink.getDescription() + " | Total Cost: $" + drink.getCost());
+        order.addItem(drink.getDescription() + " | Coffee Cost: " + drink.getCost() + "tg") ;
         return this;
     }
 
     public OrderBuilder addFood(String foodType) {
         MenuItem food = MenuItemFactory.createMenuItem(foodType);
-        order.addItem(food.prepare());
+        order.addItem(food.prepare() + " | Food Cost: " + food.getPrice() + "tg");
+        return this;
+    }
+
+    public OrderBuilder calculateCost(String foodType, String drinkType){
+        MenuItem food = MenuItemFactory.createMenuItem(foodType);
+        Drink drink = new BasicCoffee();
+        switch (drinkType.toLowerCase()){
+            case "latte":
+                drink = new Latte();
+                break;
+            case "americano":
+                drink = new Americano();
+                break;
+            case "capuccino":
+                drink = new Capuccino();
+                break;
+        }
+        double calculatedTotal = drink.getCost()+food.getPrice();
+        order.addItem("-----Total cost: " + calculatedTotal + "tg ---------");
         return this;
     }
 

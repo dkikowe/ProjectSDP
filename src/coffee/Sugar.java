@@ -15,6 +15,6 @@ public class Sugar extends IngredientDecorator {
 
     @Override
     public double getCost() {
-        return drink.getCost() + 0.10 * quantity;
+        return drink.getCost() + 10 * quantity;
     }
 }

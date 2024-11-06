@@ -1,13 +1,13 @@
 package coffee;
 
-public class BasicCoffee extends Drink {
+public class Americano extends Drink{
     @Override
     public String getDescription() {
-        return "Coffee";
+        return "Americano";
     }
 
     @Override
     public double getCost() {
-        return 0;
+        return 700;
     }
 }
