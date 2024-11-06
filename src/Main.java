@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         OrderFacade facade = new OrderFacade();
 
-        Order order = facade.createOrder("panini", "latte", 0, true, false, false);
+        Order order = facade.createOrder("panini", "americano", 2, true, false, false);
 
         facade.printOrderDetails(order);
 

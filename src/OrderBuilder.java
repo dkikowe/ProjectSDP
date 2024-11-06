@@ -46,7 +46,7 @@ public class OrderBuilder {
         return this;
     }
 
-    public OrderBuilder calculateCost(String foodType, String drinkType){
+    public OrderBuilder calculateCost(String foodType, String drinkType, int sugarAmount, boolean caramel, boolean vanilla, boolean coconut){
         MenuItem food = MenuItemFactory.createMenuItem(foodType);
         Drink drink = new BasicCoffee();
         switch (drinkType.toLowerCase()){
@@ -60,6 +60,20 @@ public class OrderBuilder {
                 drink = new Capuccino();
                 break;
         }
+
+        if (sugarAmount > 0) {
+            drink = new Sugar(drink, sugarAmount);
+        }
+        if (caramel) {
+            drink = new CaramelSyrup(drink);
+        }
+        if (vanilla) {
+            drink = new VanillaSyrup(drink);
+        }
+        if (coconut) {
+            drink = new CoconutSyrup(drink);
+        }
+
         double calculatedTotal = drink.getCost()+food.getPrice();
         order.addItem("-----Total cost: " + calculatedTotal + "tg ---------");
         return this;

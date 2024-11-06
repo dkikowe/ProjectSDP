@@ -12,6 +12,6 @@ public class CoconutSyrup extends IngredientDecorator {
 
     @Override
     public double getCost() {
-        return drink.getCost() + 300;
+        return drink.getCost() + 350;
     }
 }

@@ -12,7 +12,7 @@ public class OrderFacade {
         return orderBuilder
                 .addFood(food)
                 .addDrink(drinkType, sugar, caramel, vanilla, coconut)
-                .calculateCost(food , drinkType)
+                .calculateCost(food , drinkType ,sugar, caramel, vanilla, coconut)
                 .build();
     }
 
